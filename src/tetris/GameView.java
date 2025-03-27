@@ -37,7 +37,10 @@ public class GameView {
         } else if (userInput.equals("down")) {
             gameService.moveDown();
             gameService.printSingleRotation();
-        } else if (userInput.equals("exit")) {
+        } else if (userInput.equals("break")) {
+            //TODO
+        }
+        else if (userInput.equals("exit")) {
             this.running = false;
         }
     }
