@@ -16,8 +16,9 @@ public class TetrisMap {
         col = boardSize.substring(0, boardSize.indexOf(" "));
         row = boardSize.substring(boardSize.indexOf(" ") + 1);
         boardMap = new int[Integer.parseInt(row)][Integer.parseInt(col)];
-
         boardMapToSaveTetromino = new int[Integer.parseInt(row)][Integer.parseInt(col)];
+        printStaticBoard();
+        System.out.println();
 
     }
 
@@ -40,21 +41,17 @@ public class TetrisMap {
         }
     }
 
-    public int[][] printBoardToSaveTetromino(boolean isMasked) {
+    public void printStaticBoard() {
         for (int i = 0; i < this.boardMapToSaveTetromino.length; i++) {
             for (int j = 0; j < this.boardMapToSaveTetromino[i].length; j++) {
-                    if (isMasked) {
-                        System.out.print("- ");
-                    } else {
-                        if (boardMapToSaveTetromino[i][j] == 0) {
-                            System.out.print("- ");
-                        } else {
-                            System.out.print("0 ");
-                        }
-                    }
+                if (boardMapToSaveTetromino[i][j] == 0 && boardMap[i][j] == 0) {
+                    System.out.print("- ");
+                } else {
+                    System.out.print("0 ");
+                }
             }
             System.out.println();
         }
-        return boardMapToSaveTetromino;
+
     }
 }

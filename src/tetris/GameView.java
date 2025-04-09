@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class GameView {
 
-
+    Scanner scanner = new Scanner(System.in);
     GameService gameService;
     boolean running = true;
 
@@ -17,8 +17,8 @@ public class GameView {
         Scanner scanner = new Scanner(System.in);
 
         while (running) {
-
             manageActions(scanner.nextLine());
+
         }
     }
 
@@ -27,21 +27,22 @@ public class GameView {
 
         if (userInput.equals("rotate")) {
             gameService.rotateTetromino();
-            gameService.printSingleRotation();
         } else if (userInput.equals("right")) {
             gameService.moveRight();
-            gameService.printSingleRotation();
         } else if (userInput.equals("left")) {
             gameService.moveLeft();
-            gameService.printSingleRotation();
         } else if (userInput.equals("down")) {
             gameService.moveDown();
-            gameService.printSingleRotation();
         } else if (userInput.equals("break")) {
-            //TODO
-        }
-        else if (userInput.equals("exit")) {
+            gameService.breakTetrominoRow();
+        } else if (userInput.equals("piece")) {
+            gameService.addPiecesToBoard(scanner.nextLine());
+        } else if (userInput.equals("exit")) {
             this.running = false;
+            return;
         }
+        gameService.tetrisMap.printStaticBoard();
+        System.out.println();
+        running=!gameService.isGameOver();
     }
 }
